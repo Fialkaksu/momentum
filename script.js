@@ -183,19 +183,19 @@ function setFocus(e) {
   if (e.type === 'keypress') {
     // Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {
-      localStorage.setItem('momentum_focusId', e.target.textContent);
-      goal.blur();
-      goal.style.backgroundColor='rgba(255,255,255,0)';
-      if (goal.textContent == '') {
+      goal.style.backgroundColor = 'rgba(255,255,255,0)';
+      if (!goal.textContent) {
         goal.textContent = '[Enter Focus]'
       }
+      localStorage.setItem('momentum_focusId', e.target.textContent);
+      goal.blur();
     }
   } else {
-    localStorage.setItem('momentum_focusId', e.target.textContent);
-    goal.style.backgroundColor='rgba(255,255,255,0)';
-    if (goal.textContent == '') {
+    goal.style.backgroundColor = 'rgba(255,255,255,0)';
+    if (!goal.textContent) {
       goal.textContent = '[Enter Focus]'
     }
+    localStorage.setItem('momentum_focusId', e.target.textContent);
   }
 }
 
@@ -210,7 +210,7 @@ function nameIsInFocus(e) {
 function focusIsInFocus(e) {
   if (e.target.textContent !== '') {
     e.target.textContent = '';
-    e.target.style.backgroundColor='rgba(255,255,255,.3)';
+    e.target.style.backgroundColor = 'rgba(255,255,255,.3)';
   }
 }
 
@@ -231,7 +231,7 @@ function getImage() {
   const index_Time = t % day_Time.length;
   const index_Image = i % images.length;
   const imageSrc = base + day_Time[index_Time] + images[index_Image];
-  
+
   viewBgImage(imageSrc);
 
   i++;
@@ -272,12 +272,12 @@ function getImagePerDayTime() {
   const index_Time = d_time;
   const index_Image = count_image % images.length;
   const imageSrc = base + day_Time[index_Time] + images[index_Image];
-  
+
   localStorage.setItem('momentum_d_timeId', index_Time);
   localStorage.setItem('momentum_imageId', index_Image);
   console.log('The getImagePerDayTime worked:');
   console.log(`Background changed to ${imageSrc}`);
-  
+
   viewBgImage(imageSrc);
 
   count_image++;
