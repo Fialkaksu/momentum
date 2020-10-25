@@ -289,7 +289,7 @@ function getImagePerDayTime() {
 }
 
 function checkHour(min, sec) {
-  if (sec === 0 && min === 0) {
+  if (sec === 59 && min === 0) {
     getImagePerDayTime();
   }
 }
