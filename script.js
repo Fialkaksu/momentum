@@ -55,12 +55,13 @@ function init() {
   getFocus();
   getCity();
   check(user_Name);
-  // check(goal);
   getQuote();
   getWeather();
 
   t = Number(localStorage.getItem('momentum_d_timeId'));
   i = Number(localStorage.getItem('momentum_imageId')) + 1;
+
+  sessionStorage.setItem("is_reloaded", true);
 }
 
 // Check input width
@@ -103,6 +104,8 @@ function showTime() {
 
   // Output Time
   time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}`;
+
+  checkHour(min, sec);
 
   setTimeout(showTime, 1000);
 }
@@ -282,7 +285,13 @@ function getImagePerDayTime() {
 
   count_image++;
 
-  setTimeout(getImagePerDayTime, HOUR);
+  // setTimeout(getImagePerDayTime, HOUR);
+}
+
+function checkHour(min, sec) {
+  if (sec === 0 && min === 0) {
+    getImagePerDayTime();
+  }
 }
 
 // Get Quote
@@ -306,22 +315,22 @@ async function getWeather() {
     const message = `Oops! An error has occured: ${response.status}`;
 
     error.classList.remove('hide');
-    weatherIcon.classList.add('hide');
-    temperature.classList.add('hide');
+    weatherIcon.parentElement.classList.add('hide');
+    // temperature.classList.add('hide');
     weatherDescription.classList.add('hide');
-    humidity.classList.add('hide');
-    wind.classList.add('hide');
+    humidity.parentElement.classList.add('hide');
+    // wind.classList.add('hide');
 
     throw new Error(message);
   } else {
     const data = await response.json();
 
     error.classList.add('hide');
-    weatherIcon.classList.remove('hide');
-    temperature.classList.remove('hide');
+    weatherIcon.parentElement.classList.remove('hide');
+    // temperature.classList.remove('hide');
     weatherDescription.classList.remove('hide');
-    humidity.classList.remove('hide');
-    wind.classList.remove('hide');
+    humidity.parentElement.classList.remove('hide');
+    // wind.classList.remove('hide');
     weatherIcon.className = 'weather-icon owf';
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
     temperature.textContent = `${data.main.temp.toFixed(0)}°C`;
@@ -329,6 +338,7 @@ async function getWeather() {
     humidity.textContent = `H ${data.main.humidity}%`;
     wind.textContent = `W ${data.wind.speed}km/h`;
   }
+
 }
 
 // Catch Error
@@ -364,6 +374,11 @@ function setCity(e) {
     localStorage.setItem('momentum_cityId', e.target.textContent);
     getWeather();
   }
+}
+
+if (sessionStorage.getItem("is_reloaded")) {
+  console.log('Страница перезагружена');
+  getWeather();
 }
 
 // cityIsInFocus
