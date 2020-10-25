@@ -289,8 +289,9 @@ function getImagePerDayTime() {
 }
 
 function checkHour(min, sec) {
-  if (sec === 0 && min === 0) {
-    getImagePerDayTime();
+  console.log(min)
+  if (sec === 59 && min === 59) {
+    setBgGreet();
   }
 }
 
