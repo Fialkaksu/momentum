@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  height: 100vh;
+  width: 100vw;
+  background-image: url('../assets/images/day/01.jpg');
+  background-size: cover;
+  background-position: center center;
+  transition: background-image 1s ease-in-out;
+}
+
+.hide {
+  display: none;
+}
+
+.container-fluid {
+  height: 100vh;
+  width: 100%;
+  background: url('../assets/images/overlay.png') repeat,
+    rgba(13, 14, 14, .3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  background-size: cover;
+  color: #ffffff;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.container {
+  height: 50vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.plugins {
+  height: 20vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.month {
+  font-size: 2rem;
+}
+
+.day {
+  font-size: 3rem;
+}
+
+.time {
+  font-size: 10rem;
+  font-family: 'Roboto Mono', monospace;
+}
+
+h1 {
+  margin-bottom: 3rem;
+}
+
+.params {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 2rem;
+  background: transparent;
+  color: #ffffff;
+  border: none;
+  outline: none;
+}
+
+.city,
+.focus {
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+.change-bg {
+  width: 60px;
+  height: 60px;
+  border: 0;
+  background: url("https://www.pngarts.com/files/7/Update-Button-PNG-Image.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: grayscale(1);
+}
+
+.change-bg:hover {
+  cursor: pointer;
+  filter: grayscale(.8);
+}
+
+.change-bg:active,
+.change-bg:focus {
+  outline: 0;
+}
+
+.change-bg:active {
+  transform: scale(1.02)
+}
+
+.quote-block {
+  height: 30vh;
+  justify-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+  left: calc(100%-50%);
+}
+
+.quote {
+  font: 1.2rem Georgia, serif;
+  margin: 0 0 10px;
+  background: rgba(13, 14, 14, .3);
+  padding: 3px;
+  border-radius: 1em;
+}
+
+.quote figcaption,
+.quote blockquote {
+  margin: 1em;
+}
+
+.quote figcaption {
+  text-align: right;
+}
+
+.change-quote {
+  outline: none;
+  display: inline-block;
+  padding: 12px 40px;
+  margin: 10px 20px;
+  border-radius: 30px;
+  background-image: linear-gradient(45deg, #ced1d3 0%, #9ca0a0 50%, #353536 100%);
+  background-position: 100% 0;
+  background-size: 200% 200%;
+  box-sizing: border-box;
+  font-size: 24px;
+  font-weight: 300;
+  color: white;
+  box-shadow: 0 16px 32px 0 rgba(0, 40, 120, .35);
+  transition: .5s;
+}
+
+.change-quote:hover {
+  box-shadow: 0 0 0 0 rgba(0, 40, 120, 0);
+  background-position: 0 0;
+  cursor: pointer;
+}
+
+.weather-container {
+  padding: 5px;
+  min-width: 100px;
+  color: #ffffff;
+  background: rgba(13, 14, 14, .3);
+}
+
+.weather-container div {
+  margin: 1px;
+}
+
+.temp_icon,
+.weather-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.weather-info div {
+  margin: 0 1em;
+}
+
+@media screen and (max-width: 768px) {
+  .time {
+    font-size: 6rem;
+  }
+
+  .month {
+    font-size: 2rem;
+  }
+
+  .day {
+    font-size: 3rem;
+  }
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .time {
+    font-size: 5rem;
+  }
+
+  .month {
+    font-size: 1rem;
+  }
+
+  .day {
+    font-size: 1.5rem;
+  }
+
+  h1,
+  .name {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .quote {
+    font-size: .8rem;
+  }
+
+  .change-quote {
+    padding: 3px 10px;
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .weather-container {
+    display: flex;
+    width: 230px;
+    flex-wrap: wrap;
+  }
+
+  .city {
+    width: 100%;
+  }
+
+  .temp_icon,
+  .weather-description {
+    width: 45%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .time {
+    font-size: 3rem;
+  }
+}
