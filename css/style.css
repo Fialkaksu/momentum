@@ -6,6 +6,10 @@
   padding: 0;
 }
 
+html {
+  font-size: 14px;
+}
+
 body {
   font-family: 'Quicksand', sans-serif;
   height: 100vh;
@@ -54,11 +58,11 @@ body {
 }
 
 .month {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .day {
-  font-size: 3rem;
+  font-size: 4rem;
 }
 
 .time {
@@ -82,7 +86,7 @@ h1 {
 .city,
 .focus {
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 h2 {
@@ -127,7 +131,7 @@ h2 {
 }
 
 .quote {
-  font: 1.2rem Georgia, serif;
+  font: 1.5rem Georgia, serif;
   margin: 0 0 10px;
   background: rgba(13, 14, 14, .3);
   padding: 3px;
@@ -146,7 +150,7 @@ h2 {
 .change-quote {
   outline: none;
   display: inline-block;
-  padding: 12px 40px;
+  padding: 10px 30px;
   margin: 10px 20px;
   border-radius: 30px;
   background-image: linear-gradient(45deg, #ced1d3 0%, #9ca0a0 50%, #353536 100%);
@@ -231,7 +235,7 @@ h2 {
   }
 
   .quote {
-    font-size: .8rem;
+    font-size: 1rem;
   }
 
   .change-quote {
@@ -255,6 +259,7 @@ h2 {
     width: 45%;
   }
 }
+
 @media screen and (max-width: 400px) {
   .time {
     font-size: 3rem;
