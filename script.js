@@ -172,12 +172,10 @@ function setName(e) {
 // Get Focus
 function getFocus() {
   if (!localStorage.getItem('momentum_focusId')) {
-    goal.value = '[Enter Focus]';
+    goal.textContent = '[Enter Focus]';
   } else {
-    goal.value = localStorage.getItem('momentum_focusId');
+    goal.textContent = localStorage.getItem('momentum_focusId');
   }
-
-  check(goal);
 }
 
 // Set Focus
