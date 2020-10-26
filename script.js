@@ -137,6 +137,7 @@ function setBgGreet() {
     greeting.textContent = 'Good Night, ';
   }
 
+  console.log(new Date());
   getImagePerDayTime();
 }
 
@@ -377,7 +378,7 @@ function setCity(e) {
 }
 
 if (sessionStorage.getItem("is_reloaded")) {
-  console.log('Страница перезагружена');
+  console.log('Window reloaded');
   getWeather();
 }
 
