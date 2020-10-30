@@ -37,7 +37,9 @@ const month = document.querySelector('.month'),
 const HOUR = 1000 * 60 * 60,
   base = './assets/images/',
   day_Time = ['morning/', 'day/', 'evening/', 'night/'],
-  images = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg'];
+  IMAGES = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg'];
+
+let images = [];
 
 // Start counts for getImage
 let t, i;
@@ -47,6 +49,10 @@ let count_image = 0;
 
 // Run
 function init() {
+  for (let i = 0; i < IMAGES.length; i++) {
+    images.push(IMAGES[Math.floor(Math.random() * IMAGES.length)])
+  }
+
   showMonth();
   showDay();
   showTime();
@@ -157,17 +163,17 @@ function setName(e) {
   if (e.type === 'keypress') {
     // Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {
+      if (!user_Name.value) {
+        user_Name.value = !localStorage.getItem('momentum_nameId') ? '[Enter Name]' : localStorage.getItem('momentum_nameId');
+      }
       localStorage.setItem('momentum_nameId', e.target.value);
       user_Name.blur();
-      if (user_Name.value == '') {
-        user_Name.value = '[Enter Name]'
-      }
     }
   } else {
-    localStorage.setItem('momentum_nameId', e.target.value);
-    if (user_Name.value == '') {
-      user_Name.value = '[Enter Name]'
+    if (!user_Name.value) {
+      user_Name.value = !localStorage.getItem('momentum_nameId') ? '[Enter Name]' : localStorage.getItem('momentum_nameId');
     }
+    localStorage.setItem('momentum_nameId', e.target.value);
   }
 
   check(user_Name);
@@ -189,7 +195,7 @@ function setFocus(e) {
     if (e.which == 13 || e.keyCode == 13) {
       goal.style.backgroundColor = 'rgba(255,255,255,0)';
       if (!goal.textContent) {
-        goal.textContent = '[Enter Focus]'
+        goal.textContent = !localStorage.getItem('momentum_focusId') ? '[Enter Focus]' : localStorage.getItem('momentum_focusId');
       }
       localStorage.setItem('momentum_focusId', e.target.textContent);
       goal.blur();
@@ -197,7 +203,7 @@ function setFocus(e) {
   } else {
     goal.style.backgroundColor = 'rgba(255,255,255,0)';
     if (!goal.textContent) {
-      goal.textContent = '[Enter Focus]'
+      goal.textContent = !localStorage.getItem('momentum_focusId') ? '[Enter Focus]' : localStorage.getItem('momentum_focusId');
     }
     localStorage.setItem('momentum_focusId', e.target.textContent);
   }
@@ -279,6 +285,7 @@ function getImagePerDayTime() {
 
   localStorage.setItem('momentum_d_timeId', index_Time);
   localStorage.setItem('momentum_imageId', index_Image);
+  localStorage.setItem('momentum_imageSrc', imageSrc);
   console.log('The getImagePerDayTime worked:');
   console.log(`Background changed to ${imageSrc}`);
 
@@ -291,7 +298,8 @@ function getImagePerDayTime() {
 
 function checkHour(min, sec) {
   if (sec === 59 && min === 59) {
-    setBgGreet();
+    // setBgGreet();
+    setTimeout(setBgGreet, 1000);
   }
 }
 
