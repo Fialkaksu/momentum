@@ -49,7 +49,7 @@ let count_image = 0;
 
 // Run
 function init() {
-  for (let i = 0; i < IMAGES.length; i++) {
+  for (let i = 0; i < 6; i++) {
     images.push(IMAGES[Math.floor(Math.random() * IMAGES.length)])
   }
 
@@ -245,7 +245,7 @@ function getImage() {
   viewBgImage(imageSrc);
 
   i++;
-  if (i === 20) {
+  if (i === 6) {
     t++;
     i = 0;
   }
